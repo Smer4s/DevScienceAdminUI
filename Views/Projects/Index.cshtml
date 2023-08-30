@@ -1,0 +1,40 @@
+﻿@using DevScienceAdminUI.Models;
+@model List<Project>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DevScience</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h2>Project count: @Model.Count</h2>
+    @foreach (var project in Model)
+    {
+        <h3><b>Name: @project.Name</b></h3>
+
+        <div>
+            Description: @project.Description
+        </div>
+        <div>
+            @if (project.EmployeeId is not null && project.EmployeeId.Any() && !project.EmployeeId.Contains(0))
+            {
+                <div>
+                    Employees: @foreach (var employee in project.EmployeeId)
+                    {
+                        <ul>
+                            <li>@employee</li>
+                        </ul>
+                    }
+                </div>
+            }
+            Technologies: @foreach (var techonolgy in project.Technology)
+            {
+                <ul>
+                    <li>@techonolgy</li>
+                </ul>
+            }
+        </div>
+    }
+</body>
+</html>

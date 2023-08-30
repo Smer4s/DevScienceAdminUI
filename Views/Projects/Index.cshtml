@@ -1,5 +1,5 @@
 ﻿@using DevScienceAdminUI.Models;
-@model List<Project>
+@model List<ProjectViewModel>
 
 <!DOCTYPE html>
 <html>
@@ -9,32 +9,48 @@
 </head>
 <body>
     <h2>Project count: @Model.Count</h2>
+    <table border="1">
+
+        <tr>
+            <th><b>Name:</b></th>
+            <th><b>Description:</b></th>
+            <th><b>Employees:</b></th>
+            <th><b>Technologies:</b></th>
+            <th><b>RequestId:</b></th>
+        </tr>
     @foreach (var project in Model)
     {
-        <h3><b>Name: @project.Name</b></h3>
-
-        <div>
-            Description: @project.Description
-        </div>
-        <div>
-            @if (project.EmployeeId is not null && project.EmployeeId.Any() && !project.EmployeeId.Contains(0))
-            {
-                <div>
-                    Employees: @foreach (var employee in project.EmployeeId)
+        <tr>
+            <td>@project.Name</td>
+            <td>@project.Description</td>
+            <td>
+                @if (project.EmployeeId is not null && project.EmployeeId.Any())
+                {
+                    @foreach (var employee in project.EmployeeId)
                     {
-                        <ul>
-                            <li>@employee</li>
-                        </ul>
+                            <a href="Employees?id=@employee.Id">@employee.Telegram <br /></a>
                     }
-                </div>
-            }
-            Technologies: @foreach (var techonolgy in project.Technology)
-            {
-                <ul>
-                    <li>@techonolgy</li>
-                </ul>
-            }
-        </div>
+                
+                }
+            </td>
+            <td>
+                @foreach (var techonolgy in project.Technology)
+                {
+                    @techonolgy <br/>
+                }
+            </td>
+            <td>
+                @if(project.RequestId is not null)
+                {
+                    @foreach(var request in project.RequestId)
+                    {
+                        @request.Telegram <br/>
+                    }
+                }
+            </td>
+        </tr>
     }
+    </table>
+    <h1><a href="Auth">Auth</a></h1>
 </body>
 </html>

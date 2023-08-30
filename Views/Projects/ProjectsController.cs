@@ -12,20 +12,45 @@ namespace DevScienceAdminUI.Views.Projects
     {
         private static readonly HttpClient client = new();
 
+        //public async Task<IActionResult> IndexAsync()
+        //{
+        //    var response = await client.GetAsync("http://192.168.100.26:5002/Project/get-all");
+        //    var responseBody = await response.Content.ReadAsStringAsync();
+
+        //    var projects = JsonConvert.DeserializeObject<List<Project>>(responseBody);
+
+
+        //    if (projects is null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(await GetProjectViewModels(projects));
+        //}
+
         public async Task<IActionResult> IndexAsync()
         {
-            var response = await client.GetAsync("http://192.168.100.26:5002/Project/get-all");
-            var responseBody = await response.Content.ReadAsStringAsync();
-
-            var projects = JsonConvert.DeserializeObject<List<Project>>(responseBody);
-
-
-            if (projects is null)
+            return View(new List<ProjectViewModel>(){ new ProjectViewModel()
             {
-                return NotFound();
-            }
-
-            return View(await GetProjectViewModels(projects));
+                Description = "description",
+                EmployeeId = new List<Employee>()
+                {
+                    new Employee() { Id = 1, FirstName = "FirstName", SecondName = "SecondName", LastName = "LastName", Technology = new List<Technology>()
+                    {
+                        Technology.Angular,
+                        Technology.PHP
+                    },
+                        Telegram = "@nikitastud",
+                    } },
+                Id = 1,
+                Name = "Microsoft",
+                Technology = new List<Technology>()
+                {
+                    Technology.SQL,
+                    Technology.Java
+                }
+            } }
+            );
         }
 
         private async Task<List<ProjectViewModel>> GetProjectViewModels(List<Project>? projects)

@@ -30,7 +30,7 @@ namespace DevScienceAdminUI
                 endpoints.MapControllers();
             });
 
-            app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapControllerRoute(name: "employee", pattern: "{controller}/{action}/{telegram}");
 
             app.MapGet("/", (HttpResponse httpresponse) => httpresponse.Redirect("home"));
 

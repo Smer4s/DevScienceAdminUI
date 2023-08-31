@@ -7,6 +7,7 @@
         public string SecondName { get; set; }
         public string LastName { get; set; }
         public string Telegram { get; set; }
+        public string Description { get; set; }
         public List<Technology> Technology { get; set; }
     }
 }

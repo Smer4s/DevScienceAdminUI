@@ -8,13 +8,27 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <div>Telegram: @Model.Telegram</div><br/>
-    <div>@Model.FirstName @Model.SecondName @Model.LastName</div><br/>
-    <ul>
-        @foreach(var technology in Model.Technology)
-        {
-            <li>@technology</li><br/>
-        }
-    </ul>
+    <table border="1">
+        <tr>
+            <th><b>FirstName:</b></th>
+            <th><b>SecondName:</b></th>
+            <th><b>LastName:</b></th>
+            <th><b>Technologies:</b></th>
+            <th><b>Telegram:</b></th>
+            <th><b>Description:</b></th>
+        </tr>
+        <tr>
+            <td>@Model.FirstName</td>
+            <td>@Model.SecondName</td>
+            <td>@Model.LastName</td>
+            <td>@foreach(var tech in Model.Technology)
+                {
+                    @tech <br />
+                }
+            </td>
+            <td>@Model.Telegram</td>
+            <td>@Model.Description</td>
+        </tr>
+    </table>
 </body>
 </html>

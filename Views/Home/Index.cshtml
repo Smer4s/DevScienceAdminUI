@@ -3,10 +3,36 @@
 <head>
     <title>DevScience</title>
     <meta charset="utf-8" />
+
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: #f1f1f1;
+        }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+            /* Change the link color on hover */
+            li a:hover {
+                background-color: #555;
+                color: white;
+            }
+    </style>
+
 </head>
 <body>
     <h2>Time: @DateTime.Now</h2>
-    <h1><a href ="Auth">Auth</a></h1>
+    <ul>
+        <li><a href="Auth">Auth</a></li>
+    </ul>
 </body>
 </html>
 
